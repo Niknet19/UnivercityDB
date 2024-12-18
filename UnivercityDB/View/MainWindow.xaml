@@ -1,0 +1,91 @@
+﻿<Window x:Class="UnivercityDB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UnivercityDB" xmlns:viewmodel="clr-namespace:UnivercityDB.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+        mc:Ignorable="d"
+        Title="АРМ Отдел Кадров" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Menu Style="{StaticResource BlueMenuStyle}" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <!-- Пункт меню "Разное" -->
+            <MenuItem Header="Настройки" Style="{StaticResource BlueMenuItemStyle}" >
+                <MenuItem Header="Настройки шрифта" Visibility="{Binding CanUpdate}" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="UpdateFontSize" />
+                <MenuItem Header="Сменить пароль" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="UpdatePassword" />
+                <MenuItem Header="Выйти" Style="{StaticResource BlueMenuItemStyle}" Click="MenuItem_Click" Command="{Binding MenuCommand}" CommandParameter="Quit" />
+            </MenuItem>
+
+            <!-- Пункт меню "Сотрудники" -->
+            <MenuItem Header="Сотрудники" Style="{StaticResource BlueMenuItemStyle}" >
+                <MenuItem Header="Добавить сотрудника" Style="{StaticResource BlueMenuItemStyle}" 
+                Visibility="{Binding UserPermissions.EmployeePermission.CanWrite, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="AddEmployee"/>
+                <MenuItem Header="Список сотрудников" Visibility="{Binding UserPermissions.EmployeePermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="Employee" />
+            </MenuItem>
+
+            <!-- Пункт меню "Приказы" -->
+            <MenuItem Header="Приказы" Style="{StaticResource BlueMenuItemStyle}" 
+                      Visibility="{Binding UserPermissions.OrdersPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}">
+                <MenuItem Header="Приказы о перемещении" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="Movements"/>
+                <MenuItem Header="Приказы о поощрении" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="Promotions"/>
+                <MenuItem Header="Приказы о взысканиях" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="Penalties"/>
+                <MenuItem Header="Все приказы" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="Orders" />
+            </MenuItem>
+
+            <!-- Пункт меню "Документы" -->
+            <MenuItem Header="Документы" Style="{StaticResource BlueMenuItemStyle}" 
+                      Visibility="{Binding UserPermissions.DocumentsPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}" >
+                <MenuItem Header="Создать документ" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="Documents"/>
+                <MenuItem Header="Шаблоны запросов" Style="{StaticResource BlueMenuItemStyle}" />
+            </MenuItem>
+
+            <!-- Пункт меню "Справочники" с подменю -->
+            <MenuItem Header="Справочники" Style="{StaticResource BlueMenuItemStyle}">
+                <MenuItem Header="Города" Style="{StaticResource BlueMenuItemStyle}" 
+                          Visibility="{Binding UserPermissions.CitiesPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="City"/>
+                <MenuItem Header="Улицы" Style="{StaticResource BlueMenuItemStyle}"
+                           Visibility="{Binding UserPermissions.StreetsPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="Street"/>
+                <MenuItem Header="Отделы" Style="{StaticResource BlueMenuItemStyle}" 
+                          Visibility="{Binding UserPermissions.DepartmentsPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="Departments"/>
+                <MenuItem Header="Учебные заведения" Style="{StaticResource BlueMenuItemStyle}" 
+                           Visibility="{Binding UserPermissions.EducationPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="Education"/>
+                <MenuItem Header="Ученые звания" Style="{StaticResource BlueMenuItemStyle}"
+                           Visibility="{Binding UserPermissions.AcademicTitlesPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="AcademicTitle"/>
+                <MenuItem Header="Ученые степени" Style="{StaticResource BlueMenuItemStyle}" 
+                          Visibility="{Binding UserPermissions.AcademicDegreesPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="AcademicDegree"/>
+                <MenuItem Header="Специальности" Style="{StaticResource BlueMenuItemStyle}" 
+                           Visibility="{Binding UserPermissions.SpecialityPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="Speciality"/>
+                <MenuItem Header="Должности" Style="{StaticResource BlueMenuItemStyle}"
+                          Visibility="{Binding UserPermissions.JobtitlesPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="Jobtitles"/>
+                <MenuItem Header="Типы взысканий" Style="{StaticResource BlueMenuItemStyle}"
+                          Visibility="{Binding UserPermissions.OrdersPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="Penaltytype"/>
+                <MenuItem Header="Типы поощрений" Style="{StaticResource BlueMenuItemStyle}"
+                          Visibility="{Binding UserPermissions.OrdersPermission.CanRead, Converter={StaticResource BoolToVisibilityConverter}}"
+                          Command="{Binding MenuCommand}" CommandParameter="Promotiontype"/>
+            </MenuItem>
+
+            <!-- Пункт меню "Справка" -->
+            <MenuItem Header="Справка" Style="{StaticResource BlueMenuItemStyle}">
+                <MenuItem Header="О программе" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="About" />
+                <MenuItem Header="Содержание" Style="{StaticResource BlueMenuItemStyle}" Command="{Binding MenuCommand}" CommandParameter="Content" />
+            </MenuItem>
+        </Menu>
+        <ContentControl Grid.Row="1" Content="{Binding CurrentView}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+    </Grid>
+</Window>

@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="UnivercityDB.View.DocumentWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UnivercityDB.View" xmlns:viewmodel="clr-namespace:UnivercityDB.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DocumentsViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid Height="503" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="187*"/>
+                <ColumnDefinition Width="213*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <!-- Поле для ввода запроса -->
+            <TextBox Style="{StaticResource BlueTextBoxStyle}" x:Name="QueryTextBox" Height="100" Tag="Введите запрос" Grid.Row="0" Text="{Binding QueryText, UpdateSourceTrigger=PropertyChanged}"  
+                     AcceptsReturn="True" TextWrapping="Wrap" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin= "10,30,10,200" />
+            <TextBlock Style="{StaticResource BlueTextBlockStyle}" FontSize="16" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"><Run Text="Поле для за"/><Run Language="ru-ru" Text="п"/><Run Text="росов:"/></TextBlock>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Кнопка для выполнения запроса -->
+                <Button Style="{StaticResource BlueButtonStyle}" Content="Выполнить"  Grid.Column="0" Grid.Row="2" Command="{Binding ExecuteQueryCommand}" Margin="10,0,10,10" />
+                <Button Style="{StaticResource BlueButtonStyle}" Content="Сохранить"  Grid.Column="1" Grid.Row="2" Command="{Binding SaveQueryCommand}"  Margin="0,0,10,10"/>
+                <ComboBox Style="{StaticResource BlueComboBoxStyle}" ItemsSource="{Binding QueryTemlatesNames}"
+                          SelectedItem="{Binding SelectedQueryTemlateName, UpdateSourceTrigger=LostFocus}" x:Name="PathTextBox" Tag="Имя файла"
+                         Grid.Row="2" Margin="0,0,10,10" Grid.Column="2" />
+            </Grid>
+            <!-- DataGrid для отображения результата -->
+            <DataGrid Style="{StaticResource BlueDataGridStyle}" ItemsSource="{Binding QueryResults.DefaultView}" AutoGenerateColumns="True" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,76,10,26"/>
+        </Grid>
+    </Grid>
+</UserControl>

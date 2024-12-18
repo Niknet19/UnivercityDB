@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="View\AboutProgram.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\AddEmployee.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\AddMovementWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\AddOrderWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\AddPrevEmployment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Auth.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Catalog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ContentWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DocumentWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\EmployeeInfoWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\EmployeeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\FontSizeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\OrdersOptions.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\OrderWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PrevEmploymentsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UpdatePasswordsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\AboutProgram.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\AddEmployee.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\AddMovementWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\AddOrderWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\AddPrevEmployment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ContentWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DocumentWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\EmployeeInfoWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\EmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\FontSizeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Auth.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Catalog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\OrdersOptions.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\OrderWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PrevEmploymentsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UpdatePasswordsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
